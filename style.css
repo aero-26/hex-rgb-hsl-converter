@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Roboto Slab";
+  src: url(/fonts/RobotoSlab-VariableFont_wght.ttf);
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #22092cff;
+  color: white;
+  font-family: "Roboto Slab";
+  flex-direction: column;
+}
+
+h1 {
+  font-weight: 400;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+.color-codes-div {
+  display: flex;
+}
