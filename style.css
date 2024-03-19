@@ -27,4 +27,22 @@ h2 {
 
 .color-codes-div {
   display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.color-sec {
+  margin: 0 1.5rem;
+}
+
+.color-sec input {
+  height: 2.5rem;
+  text-align: center;
+  width: 15rem;
+}
+
+.color-output {
+  height: 10rem;
+  width: 10rem;
+  background-color: red;
 }

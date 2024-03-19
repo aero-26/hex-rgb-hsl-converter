@@ -5,28 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HEX-RGB-HSL converter</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </head>
   <body>
     <head>
       <h1>HEXA - RGBA - HSLA Converter</h1>
     </head>
     <section class="color-codes-div">
-      <div class="hex">
+      <div class="hex color-sec">
         <h2>HEXA</h2>
-        <input type="text" />
+        <input type="text" maxlength="9" ; />
         <h4>#22092cFF</h4>
       </div>
-      <div class="rgba">
+      <div class="rgba color-sec">
         <h2>RBGA</h2>
-        <input type="text" />
+        <input type="text " />
         <h4>rgb(34,9,44,1)</h4>
       </div>
-      <div class="hsla">
+      <div class="hsla color-sec">
         <h2>HSLA</h2>
         <input type="text" />
-        <h4>hsl(282.86, 66.04%, 10.39%)</h4>
+        <h4>hsl(282.86, 66.04%, 10.39%, 1.0)</h4>
       </div>
     </section>
+    <footer>
+      <div class="color-output"></div>
+    </footer>
   </body>
 </html>
