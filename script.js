@@ -47,3 +47,5 @@ const setColor = () => {
 hexColorCodeInput.addEventListener("paste", (e) => {
   colorOutput.style.backgroundColor = e.clipboardData.getData("text/plain");
 });
+
+setInterval(setColor, 1000);
