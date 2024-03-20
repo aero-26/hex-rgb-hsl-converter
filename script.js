@@ -117,9 +117,15 @@ const hslCodeCal = () => {
 const setColor = () => {
   colorOutput.style.backgroundColor = hexCode.innerHTML;
   if (hexColorCodeInput.value) {
-    hexCode.textContent = hexColorCodeInput.value;
-    rgbCode.textContent = rgbCodeCal();
-    hslCode.textContent = hslCodeCal();
+    if (hexColorCodeInput.value[0] === "#") {
+      hexCode.textContent = hexColorCodeInput.value;
+      rgbCode.textContent = rgbCodeCal();
+      hslCode.textContent = hslCodeCal();
+    } else {
+      hexCode.textContent = "!nvalid";
+      rgbCode.textContent = "!nvalid";
+      hslCode.textContent = "!nvalid";
+    }
   }
 };
 
