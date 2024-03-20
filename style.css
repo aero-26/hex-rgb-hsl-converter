@@ -11,7 +11,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #22092cff;
+  background-color: #22092c;
   color: white;
   font-family: "Roboto Slab";
   flex-direction: column;
@@ -43,6 +43,7 @@ h2 {
 
 .color-output {
   height: 10rem;
-  width: 10rem;
-  background-color: #22092cff;
+  width: 40rem;
+  margin: 2rem;
+  background-color: #22092c;
 }
