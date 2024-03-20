@@ -185,7 +185,6 @@ rgbColorCodeInput.addEventListener("keypress", function (e) {
   if (!validCharacters.find((element) => element === e.key)) {
     e.preventDefault();
   }
-  rgbManualInput();
 });
 
 // Function for manual typing
