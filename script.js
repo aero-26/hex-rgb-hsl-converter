@@ -440,7 +440,7 @@ hslColorCodeInput.addEventListener("keypress", function (e) {
 // Calculating RGB from HSL
 
 const hslToHex = () => {
-  if (rgbColorCodeInput.value !== "") {
+  if (hslColorCodeInput.value !== "") {
     // Creating an array containing input values
     const hslArr = hslColorCodeInput.value.split(",");
 
@@ -554,7 +554,7 @@ const hslToHex = () => {
             const x = d * (1 - Math.abs(((h / 60) % 2) - 1));
 
             // Calculation of rgb
-            const calculationOfRgb = (h, d, m, x, a) => {
+            const calculationOfRgb = (h, d, m, x, a = 1) => {
               let r;
               let g;
               let b;
@@ -601,6 +601,10 @@ const hslToHex = () => {
     }
   }
 };
+
+//-------------------------------------------
+// Working with copy functionality
+//-------------------------------------------
 
 //-------------------------------------------
 // Running the set Color function, Manual input RGBA in intervals
