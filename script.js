@@ -435,7 +435,6 @@ hslColorCodeInput.addEventListener("keypress", function (e) {
   if (!validCharacters.find((element) => element === e.key)) {
     e.preventDefault();
   }
-  hslToHex();
 });
 
 // Calculating RGB from HSL
@@ -606,3 +605,4 @@ const hslToHex = () => {
 //-------------------------------------------
 setInterval(setColor, 100);
 setInterval(rgbManualInput, 100);
+setInterval(hslToHex, 100);
