@@ -440,152 +440,156 @@ hslColorCodeInput.addEventListener("keypress", function (e) {
 // Calculating RGB from HSL
 
 const hslToHex = () => {
-  // Creating an array containing input values
-  const hslArr = hslColorCodeInput.value.split(",");
+  if (rgbColorCodeInput.value !== "") {
+    // Creating an array containing input values
+    const hslArr = hslColorCodeInput.value.split(",");
 
-  // Checking the correct input form
-  if (hslArr[0][0] === "h" && hslArr[0][1] === "s" && hslArr[0][2] === "l") {
-    // Checking if it is HSL or HSLA
-    if (hslArr[0][3] === "(") {
-      // Removing any invalid inputs
-      if (hslArr.length <= 3) {
-        // Improving the array list
-        const newHue = hslArr[0].slice(4);
-        const newSat = hslArr[1]?.replace("%", "");
-        const newLight = hslArr[2]?.replace("%", "").replace(")", "");
-        hslArr.splice(0, 3);
-        hslArr.unshift(newHue);
-        hslArr.push(newSat);
-        hslArr.push(newLight);
+    // Checking the correct input form
+    if (hslArr[0][0] === "h" && hslArr[0][1] === "s" && hslArr[0][2] === "l") {
+      // Checking if it is HSL or HSLA
+      if (hslArr[0][3] === "(") {
+        // Removing any invalid inputs
+        if (hslArr.length <= 3) {
+          // Improving the array list
+          const newHue = hslArr[0].slice(4);
+          const newSat = hslArr[1]?.replace("%", "");
+          const newLight = hslArr[2]?.replace("%", "").replace(")", "");
+          hslArr.splice(0, 3);
+          hslArr.unshift(newHue);
+          hslArr.push(newSat);
+          hslArr.push(newLight);
 
-        // Checking the accuracy of typo
-        if (!Number(hslArr[0]) || !Number(hslArr[1]) || !Number(hslArr[2])) {
-          hexColorCodeInput.value = " ";
-        } else if (
-          Number(hslArr[0]) <= 360 &&
-          Number(hslArr[1]) <= 100 &&
-          Number(hslArr[2]) <= 100
-        ) {
-          // Getting HSL from the array
-          const h = Number(hslArr[0]);
-          const s = Number(hslArr[1]) / 100;
-          const l = Number(hslArr[2]) / 100;
+          // Checking the accuracy of typo
+          if (!Number(hslArr[0]) || !Number(hslArr[1]) || !Number(hslArr[2])) {
+            hexColorCodeInput.value = " ";
+          } else if (
+            Number(hslArr[0]) <= 360 &&
+            Number(hslArr[1]) <= 100 &&
+            Number(hslArr[2]) <= 100
+          ) {
+            // Getting HSL from the array
+            const h = Number(hslArr[0]);
+            const s = Number(hslArr[1]) / 100;
+            const l = Number(hslArr[2]) / 100;
 
-          // Calculating required variables for rgb
-          const d = s * (1 - Math.abs(2 * l - 1));
-          const m = 255 * (l - d / 2);
-          const x = d * (1 - Math.abs(((h / 60) % 2) - 1));
+            // Calculating required variables for rgb
+            const d = s * (1 - Math.abs(2 * l - 1));
+            const m = 255 * (l - d / 2);
+            const x = d * (1 - Math.abs(((h / 60) % 2) - 1));
 
-          // Calculation of rgb
-          const calculationOfRgb = (h, d, m, x) => {
-            let r;
-            let g;
-            let b;
+            // Calculation of rgb
+            const calculationOfRgb = (h, d, m, x) => {
+              let r;
+              let g;
+              let b;
 
-            if (h >= 0 && h < 60) {
-              r = Math.trunc(255 * d + m);
-              g = Math.trunc(255 * x + m);
-              b = Math.trunc(m);
-            } else if (h >= 60 && h < 120) {
-              r = Math.trunc(255 * x + m);
-              g = Math.trunc(255 * d + m);
-              b = Math.trunc(m);
-            } else if (h >= 120 && h < 180) {
-              r = Math.trunc(m);
-              g = Math.trunc(255 * d + m);
-              b = Math.trunc(255 * x + m);
-            } else if (h >= 180 && h < 240) {
-              r = Math.trunc(m);
-              g = Math.trunc(255 * x + m);
-              b = Math.trunc(255 * d + m);
-            } else if (h >= 240 && h < 300) {
-              r = Math.trunc(255 * x + m);
-              g = Math.trunc(m);
-              b = Math.trunc(255 * d + m);
-            } else if (h >= 300 && h < 360) {
-              r = Math.trunc(255 * d + m);
-              g = Math.trunc(m);
-              b = Math.trunc(255 * x + m);
-            }
-            return [r, g, b];
-          };
-          rgbToHex(...calculationOfRgb(h, d, m, x));
+              if (h >= 0 && h < 60) {
+                r = Math.trunc(255 * d + m);
+                g = Math.trunc(255 * x + m);
+                b = Math.trunc(m);
+              } else if (h >= 60 && h < 120) {
+                r = Math.trunc(255 * x + m);
+                g = Math.trunc(255 * d + m);
+                b = Math.trunc(m);
+              } else if (h >= 120 && h < 180) {
+                r = Math.trunc(m);
+                g = Math.trunc(255 * d + m);
+                b = Math.trunc(255 * x + m);
+              } else if (h >= 180 && h < 240) {
+                r = Math.trunc(m);
+                g = Math.trunc(255 * x + m);
+                b = Math.trunc(255 * d + m);
+              } else if (h >= 240 && h < 300) {
+                r = Math.trunc(255 * x + m);
+                g = Math.trunc(m);
+                b = Math.trunc(255 * d + m);
+              } else if (h >= 300 && h < 360) {
+                r = Math.trunc(255 * d + m);
+                g = Math.trunc(m);
+                b = Math.trunc(255 * x + m);
+              }
+              return [r, g, b];
+            };
+            rgbToHex(...calculationOfRgb(h, d, m, x));
+          } else {
+            hexColorCodeInput.value = " ";
+          }
         } else {
           hexColorCodeInput.value = " ";
         }
-      } else {
-        hexColorCodeInput.value = " ";
       }
-    }
 
-    // If alpha is included
-    else if (hslArr[0][3] === "a") {
-      if (hslArr.length <= 4) {
-        // Improving the array list
-        const newHue = hslArr[0].slice(5);
-        const newSat = hslArr[1]?.replace("%", "");
-        const newLight = hslArr[2]?.replace("%", "");
-        const newAlpha = hslArr[3]?.replace(")", "");
-        hslArr.splice(0, 4);
-        hslArr.unshift(newHue);
-        hslArr.push(newSat);
-        hslArr.push(newLight);
-        hslArr.push(newAlpha);
+      // If alpha is included
+      else if (hslArr[0][3] === "a") {
+        if (hslArr.length <= 4) {
+          // Improving the array list
+          const newHue = hslArr[0].slice(5);
+          const newSat = hslArr[1]?.replace("%", "");
+          const newLight = hslArr[2]?.replace("%", "");
+          const newAlpha = hslArr[3]?.replace(")", "");
+          hslArr.splice(0, 4);
+          hslArr.unshift(newHue);
+          hslArr.push(newSat);
+          hslArr.push(newLight);
+          hslArr.push(newAlpha);
 
-        // Checking the validation of input
-        if (!Number(hslArr[0]) || !Number(hslArr[1]) || !Number(hslArr[2])) {
-          hexColorCodeInput.value = " ";
-        } else if (
-          Number(hslArr[0]) <= 360 &&
-          Number(hslArr[1]) <= 100 &&
-          Number(hslArr[2]) <= 100 &&
-          Number(hslArr[3]) <= 1
-        ) {
-          // Getting HSL from the array
-          const h = Number(hslArr[0]);
-          const s = Number(hslArr[1]) / 100;
-          const l = Number(hslArr[2]) / 100;
-          const a = Number(hslArr[3]);
+          // Checking the validation of input
+          if (!Number(hslArr[0]) || !Number(hslArr[1]) || !Number(hslArr[2])) {
+            hexColorCodeInput.value = " ";
+          } else if (
+            Number(hslArr[0]) <= 360 &&
+            Number(hslArr[1]) <= 100 &&
+            Number(hslArr[2]) <= 100 &&
+            Number(hslArr[3]) <= 1
+          ) {
+            // Getting HSL from the array
+            const h = Number(hslArr[0]);
+            const s = Number(hslArr[1]) / 100;
+            const l = Number(hslArr[2]) / 100;
+            const a = Number(hslArr[3]);
 
-          // Calculating required variables for rgb
-          const d = s * (1 - Math.abs(2 * l - 1));
-          const m = 255 * (l - d / 2);
-          const x = d * (1 - Math.abs(((h / 60) % 2) - 1));
+            // Calculating required variables for rgb
+            const d = s * (1 - Math.abs(2 * l - 1));
+            const m = 255 * (l - d / 2);
+            const x = d * (1 - Math.abs(((h / 60) % 2) - 1));
 
-          // Calculation of rgb
-          const calculationOfRgb = (h, d, m, x, a) => {
-            let r;
-            let g;
-            let b;
+            // Calculation of rgb
+            const calculationOfRgb = (h, d, m, x, a) => {
+              let r;
+              let g;
+              let b;
 
-            if (h >= 0 && h < 60) {
-              r = Math.trunc(255 * d + m);
-              g = Math.trunc(255 * x + m);
-              b = Math.trunc(m);
-            } else if (h >= 60 && h < 120) {
-              r = Math.trunc(255 * x + m);
-              g = Math.trunc(255 * d + m);
-              b = Math.trunc(m);
-            } else if (h >= 120 && h < 180) {
-              r = Math.trunc(m);
-              g = Math.trunc(255 * d + m);
-              b = Math.trunc(255 * x + m);
-            } else if (h >= 180 && h < 240) {
-              r = Math.trunc(m);
-              g = Math.trunc(255 * x + m);
-              b = Math.trunc(255 * d + m);
-            } else if (h >= 240 && h < 300) {
-              r = Math.trunc(255 * x + m);
-              g = Math.trunc(m);
-              b = Math.trunc(255 * d + m);
-            } else if (h >= 300 && h < 360) {
-              r = Math.trunc(255 * d + m);
-              g = Math.trunc(m);
-              b = Math.trunc(255 * x + m);
-            }
-            return [r, g, b, a];
-          };
-          rgbToHex(...calculationOfRgb(h, d, m, x, a));
+              if (h >= 0 && h < 60) {
+                r = Math.trunc(255 * d + m);
+                g = Math.trunc(255 * x + m);
+                b = Math.trunc(m);
+              } else if (h >= 60 && h < 120) {
+                r = Math.trunc(255 * x + m);
+                g = Math.trunc(255 * d + m);
+                b = Math.trunc(m);
+              } else if (h >= 120 && h < 180) {
+                r = Math.trunc(m);
+                g = Math.trunc(255 * d + m);
+                b = Math.trunc(255 * x + m);
+              } else if (h >= 180 && h < 240) {
+                r = Math.trunc(m);
+                g = Math.trunc(255 * x + m);
+                b = Math.trunc(255 * d + m);
+              } else if (h >= 240 && h < 300) {
+                r = Math.trunc(255 * x + m);
+                g = Math.trunc(m);
+                b = Math.trunc(255 * d + m);
+              } else if (h >= 300 && h < 360) {
+                r = Math.trunc(255 * d + m);
+                g = Math.trunc(m);
+                b = Math.trunc(255 * x + m);
+              }
+              return [r, g, b, a];
+            };
+            rgbToHex(...calculationOfRgb(h, d, m, x, a));
+          } else {
+            hexColorCodeInput.value = " ";
+          }
         } else {
           hexColorCodeInput.value = " ";
         }
@@ -595,8 +599,6 @@ const hslToHex = () => {
     } else {
       hexColorCodeInput.value = " ";
     }
-  } else {
-    hexColorCodeInput.value = " ";
   }
 };
 
