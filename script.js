@@ -9,6 +9,7 @@ const rgbColorCodeInput = rgb.children[1];
 const rgbCode = rgb.children[2];
 const hslColorCodeInput = hsl.children[1];
 const hslCode = hsl.children[2];
+const copy = document.getElementsByTagName("span");
 
 //------------------------------------------------------------------------------------------
 //  For converting HEX to other values
@@ -225,9 +226,10 @@ const rgbManualInput = () => {
           checkStr.search("a") !== -1
         ) {
           hexColorCodeInput.value = " ";
-        } else if (rgba.length <= 3) {
-          // Checking if the length is appropriate and converting the input to HEX code
+        }
 
+        // Checking if the length is appropriate and converting the input to HEX code
+        else if (rgba.length <= 3) {
           // Special case to fix 0
           if (Number(rgba[0]) === 0) {
             rgbToHex(0);
@@ -605,8 +607,31 @@ const hslToHex = () => {
 //-------------------------------------------
 // Working with copy functionality
 //-------------------------------------------
+const toggleHiddenitem = (i) => {
+  copy[i].classList.toggle("hidden");
+};
 
-//-------------------------------------------
+hexCode.addEventListener("click", function (e) {
+  e.preventDefault();
+  toggleHiddenitem(0);
+  navigator.clipboard.writeText(hexCode.textContent);
+  const revert = () => toggleHiddenitem(0);
+  setTimeout(revert, 2000);
+});
+rgbCode.addEventListener("click", function (e) {
+  e.preventDefault();
+  toggleHiddenitem(1);
+  navigator.clipboard.writeText(rgbCode.textContent);
+  const revert = () => toggleHiddenitem(1);
+  setTimeout(revert, 2000);
+});
+hslCode.addEventListener("click", function (e) {
+  e.preventDefault();
+  toggleHiddenitem(2);
+  navigator.clipboard.writeText(hslCode.textContent);
+  const revert = () => toggleHiddenitem(2);
+  setTimeout(revert, 2000);
+}); //-------------------------------------------
 // Running the set Color function, Manual input RGBA in intervals
 //-------------------------------------------
 setInterval(setColor, 100);

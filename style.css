@@ -47,3 +47,18 @@ h2 {
   margin: 2rem;
   background-color: #22092c;
 }
+
+.copy {
+  cursor: pointer;
+}
+.copy:hover {
+  color: #51ff36;
+}
+
+.hidden {
+  display: none;
+}
+span {
+  font-weight: 500;
+  color: #51ff36;
+}
