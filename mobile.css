@@ -1,0 +1,69 @@
+@media screen and (max-width: 435px) {
+  body {
+    overflow-x: hidden;
+  }
+  h1 {
+    font-size: x-large;
+  }
+  h2 {
+    font-size: x-large;
+  }
+  .copy {
+    font-size: large;
+  }
+  .color-codes-div {
+    flex-direction: column;
+  }
+  .color-output {
+    height: 6rem;
+    width: 15rem;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  body {
+    overflow-x: hidden;
+  }
+  h1 {
+    font-size: larger;
+  }
+  h2 {
+    font-size: larger;
+  }
+  .copy {
+    margin: 0.5rem;
+    font-size: medium;
+  }
+  .color-codes-div {
+    flex-direction: column;
+  }
+  .color-output {
+    height: 6rem;
+    width: 15rem;
+    margin: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 325px) {
+  body {
+    overflow-x: hidden;
+  }
+  h1 {
+    font-size: larger;
+  }
+  h2 {
+    font-size: large;
+  }
+  .copy {
+    margin: 0.5rem;
+    font-size: medium;
+  }
+  .color-codes-div {
+    flex-direction: column;
+  }
+  .color-output {
+    height: 6rem;
+    width: 15rem;
+    margin: 0.5rem;
+  }
+}

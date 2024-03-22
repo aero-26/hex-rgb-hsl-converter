@@ -1,0 +1,42 @@
+@media screen and (max-width: 900px) {
+  body {
+    overflow-x: hidden;
+    justify-content: center;
+  }
+  .color-sec input {
+    width: 12rem;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  body {
+    justify-content: center;
+  }
+  .color-codes-div {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .color-output {
+    margin: 0.5rem 0;
+    height: 6rem;
+  }
+}
+
+@media screen and (max-width: 690px) {
+  .color-output {
+    margin: 0.5rem 0;
+    height: 6rem;
+    width: 30rem;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  h1 {
+    font-size: x-large;
+  }
+  .color-output {
+    margin: 0.5rem 0;
+    height: 6rem;
+    width: 25rem;
+  }
+}
